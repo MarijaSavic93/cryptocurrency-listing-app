@@ -52,7 +52,7 @@ app.get('/detailsFIAT', (appRequest, appResponse) => {
     });
 });
 
-app.get('/detalisBitcoin', (appRequest, appResponse) => {
+app.get('/detailsBitcoin', (appRequest, appResponse) => {
     const cryptocurrencyId = appRequest.query.id;
 
     const options = {
@@ -66,7 +66,7 @@ app.get('/detalisBitcoin', (appRequest, appResponse) => {
         const originalBitconDetails = response.data.data[cryptocurrencyId].quote.BTC;
 
         const result = (({price, percent_change_1h, percent_change_24h, percent_change_7d}) => ({price, percent_change_1h, percent_change_24h, percent_change_7d}))(originalBitconDetails);
-
+        
         appResponse.json(result);
     });
 });
