@@ -14,8 +14,7 @@ async (parameters) => {
 
         const loadedCryptocurrency = fiatCurrency.data;
         loadedCryptocurrency.quote.BTC = bitcoin.data;
-        
-        console.log(bitcoin.data);
+
         return  loadedCryptocurrency;
     });                 
     return response;
