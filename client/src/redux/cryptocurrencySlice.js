@@ -10,11 +10,12 @@ export const getCryptocurrencyById = createAsyncThunk('cryptocurrencies/getCrypt
 async (parameters) => {
 
     const response = await Promise.all([axios.get('/detailsFIAT', {params: { id : parameters.id, convert: `${parameters.fiatCurrency}`}}), 
-    axios.get('/detailsBitcoin', {params: { id : parameters.id, convert: 'BTC'}})]).then(([fiatCurrency, bitcoin]) => {
+    axios.get('/detailsBitcoin', {params: { id : parameters.id }})]).then(([fiatCurrency, bitcoin]) => {
 
         const loadedCryptocurrency = fiatCurrency.data;
         loadedCryptocurrency.quote.BTC = bitcoin.data;
-         
+        
+        console.log(bitcoin.data);
         return  loadedCryptocurrency;
     });                 
     return response;
